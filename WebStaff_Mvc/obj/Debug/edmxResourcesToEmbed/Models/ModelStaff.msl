@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="asset_staffModelStoreContainer" CdmEntityContainer="asset_staffEntities">
+    <EntitySetMapping Name="asset_staff">
+      <EntityTypeMapping TypeName="asset_staffModel.asset_staff">
+        <MappingFragment StoreEntitySet="asset_staff">
+          <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+          <ScalarProperty Name="desc_asset" ColumnName="desc_asset" />
+          <ScalarProperty Name="fk_staff" ColumnName="fk_staff" />
+          <ScalarProperty Name="fk_category" ColumnName="fk_category" />
+          <ScalarProperty Name="date_in" ColumnName="date_in" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="asset_staffModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staffs">
+      <EntityTypeMapping TypeName="asset_staffModel.staff">
+        <MappingFragment StoreEntitySet="staff">
+          <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="job_type" ColumnName="job_type" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

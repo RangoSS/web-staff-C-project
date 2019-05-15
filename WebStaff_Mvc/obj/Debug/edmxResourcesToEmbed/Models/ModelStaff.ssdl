@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="asset_staffModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="asset_staff">
+    <Key>
+      <PropertyRef Name="asset_id" />
+    </Key>
+    <Property Name="asset_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="desc_asset" Type="varchar" MaxLength="50" />
+    <Property Name="fk_staff" Type="int" />
+    <Property Name="fk_category" Type="int" />
+    <Property Name="date_in" Type="date" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="staff_id" />
+    </Key>
+    <Property Name="staff_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="user_name" Type="varchar" MaxLength="50" />
+    <Property Name="user_password" Type="varchar" MaxLength="50" />
+    <Property Name="job_type" Type="varchar" MaxLength="50" />
+    <Property Name="salary" Type="float" />
+  </EntityType>
+  <Association Name="FK__asset_sta__fk_ca__4E88ABD4">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="asset_staff" Type="Self.asset_staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="asset_staff">
+        <PropertyRef Name="fk_category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__asset_sta__fk_st__4D94879B">
+    <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
+    <End Role="asset_staff" Type="Self.asset_staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="staff">
+        <PropertyRef Name="staff_id" />
+      </Principal>
+      <Dependent Role="asset_staff">
+        <PropertyRef Name="fk_staff" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="asset_staffModelStoreContainer">
+    <EntitySet Name="asset_staff" EntityType="Self.asset_staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="staff" EntityType="Self.staff" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__asset_sta__fk_ca__4E88ABD4" Association="Self.FK__asset_sta__fk_ca__4E88ABD4">
+      <End Role="category" EntitySet="category" />
+      <End Role="asset_staff" EntitySet="asset_staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__asset_sta__fk_st__4D94879B" Association="Self.FK__asset_sta__fk_st__4D94879B">
+      <End Role="staff" EntitySet="staff" />
+      <End Role="asset_staff" EntitySet="asset_staff" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
